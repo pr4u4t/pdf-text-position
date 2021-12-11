@@ -20,12 +20,24 @@ def show_ltitem_hierarchy(o: Any, depth=0):
     if o.__class__.__name__ == "LTAnno":
        return
 
+    if o.__class__.__name__ == "LTCurve":
+       return
+
+    if o.__class__.__name__ == "LTFigure":
+       return
+
+    if o.__class__.__name__ == "LTRect":
+       return
+
+    if o.__class__.__name__ == "LTLine":
+       return 
+
     if o.__class__.__name__ != "LTTextBoxHorizontal":
-       print(
-          f'{get_indented_name(o, depth):<30.30s} '
-          f'{get_optional_bbox(o)} '
-          f'{get_optional_text(o)}'
-       )
+       name = f'{get_indented_name(o, depth):<30.30s} '
+       pos = f'{get_optional_bbox(o)} '
+       text = f'{get_optional_text(o)}'
+       if text != '':
+          print(name,pos,text)
     
     if isinstance(o, Iterable):
         for i in o:
